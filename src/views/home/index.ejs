@@ -1,0 +1,35 @@
+<body>
+  <% if (user) { %>
+  <div class="container">
+    <h1>User Profile</h1>
+    <div class="loginContainer">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>
+            <%= user.name %>
+          </h2>
+          <p><strong>Username:</strong>
+            <%= user.username %>
+          </p>
+          <p><strong>User ID:</strong>
+            <%= user.id %>
+          </p>
+          <p><strong>Email:</strong>
+            <%= user.email %>
+          </p>
+          <p><strong>Last activity:</strong>
+            <%= user.last_activity_on %>
+          </p>
+          <!-- Add more user details as needed -->
+        </div>
+        <div class="col-md-4">
+          <img src="<%= user.avatar_url %>" alt="Avatar" class="img-fluid rounded-circle">
+        </div>
+        <a class="btn btn-primary btn-lg" href="/auth/logout" role="button">Log out</a>
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+  <%- include('../auth/login') %>
+  <% } %>
+</body>

@@ -1,0 +1,5 @@
+<% if (typeof flash !== 'undefined') { %>
+    <div id="flash" class="alert alert-<%= flash.type %>">
+  <%= flash.text %>
+</div>
+<% } %>

@@ -1,0 +1,65 @@
+<div class="container">
+    <h1>Projects</h1>
+    <% if ( !groups || groups.length===0) { %>
+        <p>No projects found.</p>
+        <% } else { %>
+            <div class="row">
+                <% groups.forEach(group=> { %>
+                    <div class="card">
+                        <div class="card-header">
+                        <h3>
+                            Projects of group <%= group.name %>
+                        </h3>
+                        <p>Group URL: <a href="<%= group.webUrl %>"><%= group.webUrl %></a>
+                        </p>
+                        <p>Group path: <%= group.fullPath %>
+                        </p>
+                        </div>
+                        <div class="projects-list">
+                            <% group.projects.nodes.forEach(project=> { %>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>
+                                                <%= project.name %>
+                                            </h4>
+                                            <strong>Description: <%= project.description %></strong>
+                                            <p>Avatar URL: <%= project.avatarUrl %>
+                                            </p>
+                                            <p>
+                                                <%= project.webUrl %>
+                                            </p>
+                                            <img src="<%= project.avatarUrl %>" alt="Avatar" class="img-fluid rounded-circle">
+                                            <p><%= project.avatarUrl %></p>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                              <a href="<%= project.webUrl %>" class="btn btn-primary me-md-2" type="button">Go to Project</a>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <strong>Last Commit</strong>
+                                            <p>
+                                                <%= project.repository.tree.lastCommit.committedDate %>
+                                            </p>
+                                            <p>
+                                                <%= project.repository.tree.lastCommit.author.username %>
+                                            </p>
+                                            <p>
+                                                <%= project.repository.tree.lastCommit.author.name %>
+                                            </p>
+                                            
+                                        </div>
+                                        <div class="col">
+                                            <img src="<%= project.repository.tree.lastCommit.author.avatarUrl %>" alt="Avatar" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                        
+
+                        <% }) %>
+                    </div>
+                    </div>
+            </div>
+            <% }) %>
+</div>
+<% } %>
+    </div>

@@ -1,0 +1,44 @@
+{
+  "name": "assignment-wt1",
+  "version": "1.0.0",
+  "description": "In modern web applications, the ability to delegate access between systems is crucial. One widely used standard for access delegation is OAuth (Open Authorization). Although the OAuth flow may appear complex at first glance, it is important to understand the roles and communication of the different stakeholders (client/consumer/service provider) involved.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --inspect -r dotenv/config src/server.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.lnu.se:1dv027/student/ae224pc/assignment-wt1.git"
+  },
+  "keywords": [],
+  "author": "Anna Engström Frick",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-format": "^4.0.14",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^7.1.5",
+    "express-session": "^1.18.0",
+    "gitignore": "^0.7.0",
+    "graphql": "^16.8.1",
+    "helmet": "^7.1.0",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.10",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^46.10.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
