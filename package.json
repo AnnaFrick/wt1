@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 src/server.js --name my-server",
+    "start": "node src/server.js",
     "dev": "nodemon --inspect -r dotenv/config src/server.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
