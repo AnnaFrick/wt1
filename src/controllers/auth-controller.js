@@ -9,18 +9,6 @@ export class AuthController {
      * @param {object} res - Express response object.
      * @param {Function} next - Express next middleware function.
      */
-    loginGet(req, res, next) {
-        res.render('auth/login')
-    }
-
-    /**
-     * Authorizes a user.
-     * login POST.
-     *
-     * @param {object} req - Express request object.
-     * @param {object} res - Express response object.
-     * @param {Function} next - Express next middleware function.
-     */
     async loginPost(req, res, next) {
         // Logic for handling login form submission (e.g., validating credentials)
         try {
@@ -59,10 +47,29 @@ export class AuthController {
 
             const userData = await this.getUserData(accessToken)
 
-            req.session.user = userData
-            console.log("this is the req.session:" , req.session)
-            console.log("Setting user data in session:", req.session.user)
-            res.redirect('/wt1')
+            console.log("blipp blapp")
+
+            req.session.regenerate((err) => {
+                console.log("hej hopp")
+                if (err) {
+                    // Handle regeneration error
+                    console.error('Error regenerating session:', err)
+                    res.status(500).send('Internal Server Error')
+                } else {
+                    // Now you can set new session data
+                    req.session.user = userData
+                    console.log("hej hej hej")
+                    console.log("Setting user data in session:", req.session.user)
+                    res.redirect('../')
+                }
+            })
+
+            next()
+
+            //req.session.user = userData
+            // console.log("this is the req.session:" , req.session)
+            // console.log("Setting user data in session:", req.session.user)
+            //res.redirect('../')
 
         } catch (error) {
             console.error('Error while handling callback:', error)
@@ -129,7 +136,7 @@ export class AuthController {
             }
             // Cleanse the cookie and redirect to the home page
             res.clearCookie(process.env.SESSION_NAME)
-            res.redirect('/wt1')
+            res.redirect('../')
         })
     }
 
